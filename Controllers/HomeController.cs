@@ -7,27 +7,21 @@ namespace CarInventoryReactAsp.Controllers
     [Route("api/[controller]")]
     [ApiController]
 
-    public class LoginController : ControllerBase
+    public class HomeController : ControllerBase
     {
         readonly String BASE_URL = "http://localhost:3000";
 
         private readonly IHttpClientFactory _httpClientFactory;
-        public LoginController(IHttpClientFactory httpClientFactory) =>
+        public HomeController(IHttpClientFactory httpClientFactory) =>
        _httpClientFactory = httpClientFactory;
 
-        [HttpPost("login")]
-        public async Task<String> Post([FromBody] UserLogin info)
+        [HttpPost("get-all-cars")]
+        public async Task<String> Post()
         {
 
             var client = _httpClientFactory.CreateClient();
-            UserLogin login = new UserLogin();
-            login.username = info.username;
-            login.password = info.password;
-            JsonContent content = JsonContent.Create(login);
+            var response = await client.PostAsync(BASE_URL + "/inventory/getcars/", null);
 
-
-            var response = await client.PostAsync(BASE_URL + "/users/login/", content);
-            Console.WriteLine(login.username, login.password);
             response.EnsureSuccessStatusCode();
 
             string responseBody = await response.Content.ReadAsStringAsync();
