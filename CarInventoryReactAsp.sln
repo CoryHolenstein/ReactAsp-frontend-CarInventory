@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarInventoryReactAsp", "CarInventoryReactAsp.csproj", "{9F9FEB7A-F9F8-4694-9036-7C433CBBE6DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F9FEB7A-F9F8-4694-9036-7C433CBBE6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F9FEB7A-F9F8-4694-9036-7C433CBBE6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F9FEB7A-F9F8-4694-9036-7C433CBBE6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F9FEB7A-F9F8-4694-9036-7C433CBBE6DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B56284BC-7A59-4EE1-9123-6E7E9799225A}
+	EndGlobalSection
+EndGlobal
