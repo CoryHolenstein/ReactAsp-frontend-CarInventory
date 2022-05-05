@@ -22,7 +22,7 @@ export class Home extends Component {
         this.grabAllCars();
 
     }
-
+    //on page load grab all cars from api using post
     async grabAllCars() {
         try {
             await axios.post('https://localhost:7072/api/Home/get-all-cars', {
@@ -39,7 +39,7 @@ export class Home extends Component {
 
             });
         } catch (error) {
-            this.setState({ serverCallStatus: "Already exists or bad credentials." });
+            console.log(error);
         }
     }
     async loadNextPage(pageNum) {
@@ -54,6 +54,7 @@ export class Home extends Component {
             });
     }
 
+    //render the tables of cars
     static renderCarsTable(cars) {
         return (
             <Table className="styled-table" aria-labelledby="tabelLabel" >
@@ -92,6 +93,7 @@ export class Home extends Component {
         this.loadNextPage(num);
     }
 
+    //this hides the component either AddCarForm or DeleteCarForm
     hideComponent(name) {
         console.log(name);
         switch (name) {
@@ -141,8 +143,7 @@ export class Home extends Component {
                     Click to {this.state.deleteCarFormBtnText} form
                 </Button>
                 {showDeleteCarForm && <DeleteCar />}
-               
-                {this.state.serverCallStatus}
+             
             </div>
 
 

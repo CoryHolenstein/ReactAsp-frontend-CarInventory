@@ -4,14 +4,6 @@ namespace CarInventoryReactAsp.Models
 {
     public class UserRegister
     {
-        [JsonPropertyName("username")]
-        public string username { get; set; }
-
-        [JsonPropertyName("password")]
-        public string password { get; set; }
-
-        [JsonPropertyName("passwordConfirmation")]
-        public string passwordConfirmation { get; set; }
 
         public UserRegister()
         {
@@ -25,6 +17,15 @@ namespace CarInventoryReactAsp.Models
             password = passInput;
             passwordConfirmation = passConfirmationInput;
         }
+
+        [JsonPropertyName("username")]
+        public string username { get; set; }
+
+        [JsonPropertyName("password")]
+        public string password { get; set; }
+
+        [JsonPropertyName("passwordConfirmation")]
+        public string passwordConfirmation { get; set; }
 
     }
 }

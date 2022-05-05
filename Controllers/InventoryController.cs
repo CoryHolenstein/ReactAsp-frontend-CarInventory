@@ -14,16 +14,15 @@ namespace CarInventoryReactAsp.Controllers
         public InventoryController(IHttpClientFactory httpClientFactory) =>
        _httpClientFactory = httpClientFactory;
 
+
+        //this is our delete car end point
+        //user passes in an inventory id and we delete it based off that
         [HttpPost("delete-car")]
         public async Task<String> Post([FromBody] Car car)
         {
 
 
             var client = _httpClientFactory.CreateClient();
-
-         
-
-
             JsonContent content = JsonContent.Create(car);
 
             Console.WriteLine(content); 
@@ -36,6 +35,8 @@ namespace CarInventoryReactAsp.Controllers
             Console.WriteLine(responseBody);
             return responseBody;
         }
+        //this is our add car endpoint
+        //we bring in a car object, and we generate a random inventory ID before sending it to the API
         [HttpPost("add-car")]
         public async Task<String> add([FromBody] Car car)
         {

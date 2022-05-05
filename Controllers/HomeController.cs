@@ -15,6 +15,7 @@ namespace CarInventoryReactAsp.Controllers
         public HomeController(IHttpClientFactory httpClientFactory) =>
        _httpClientFactory = httpClientFactory;
 
+        //home controller is the main page
         [HttpPost("get-all-cars")]
         public async Task<String> Post()
         {

@@ -4,7 +4,10 @@ namespace CarInventoryReactAsp.Models
 {
     public class Car
     {
-
+        //car object base class
+        //every car has an inventory id,brand, name, color and type
+        //inventory ID could be randomly generated on object creeation (look into this)
+       
         public Car()
         {
             InventoryID = "hmm";
@@ -31,6 +34,8 @@ namespace CarInventoryReactAsp.Models
 
         }
 
+        //variables and their json identifiers
+        //these should match the middle end 
         [JsonPropertyName("inventoryID")]
         public string InventoryID { get; set; }
 

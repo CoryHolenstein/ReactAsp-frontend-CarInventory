@@ -16,6 +16,7 @@ export class DeleteCar extends Component {
 
     }
 
+    //handle text change in the inventory id input box
     handleInventoryIDChange(event) {
         this.setState({
             inventoryID: event.target.value
@@ -24,7 +25,7 @@ export class DeleteCar extends Component {
     }
   
 
-
+    //this is a component we add to the home page so the user can delete cars by inventory id
     
     async deleteCar() {
 

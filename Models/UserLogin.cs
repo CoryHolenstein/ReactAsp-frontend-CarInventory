@@ -2,6 +2,8 @@
 
 namespace CarInventoryReactAsp.Models
 {
+
+    //userlogin reference, could possibly put register and login into one class
     public class UserLogin
     {
 
@@ -15,6 +17,8 @@ namespace CarInventoryReactAsp.Models
             username = userInput;
             password = passInput;
         }
+
+        //login json property names
 
         [JsonPropertyName("username")]
         public string username { get; set; }
