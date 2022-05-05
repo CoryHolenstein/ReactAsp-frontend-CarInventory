@@ -4,6 +4,7 @@ import { Badge, Button, Table, Form } from 'react-bootstrap';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { AddCar } from './AddCar';
+import { DeleteCar } from './DeleteCar';
 
 
 export class Home extends Component {
@@ -12,7 +13,7 @@ export class Home extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { allCars: "", nextPage: "", previousPage: "", showAddCarForm: false, addCarFormBtnText: "open", loading: true };
+        this.state = { allCars: "", nextPage: "", previousPage: "", showAddCarForm: false, addCarFormBtnText: "open", showDeleteCarForm: false, deleteCarFormBtnText: "open", loading: true };
         this.hideComponent = this.hideComponent.bind(this);
     }
 
@@ -102,7 +103,14 @@ export class Home extends Component {
                 }
                 this.setState({ showAddCarForm: !this.state.showAddCarForm });
                 break;
-
+            case "showDeleteCarForm":
+                if (this.state.showDeleteCarForm == false) {
+                    this.setState({ deleteCarFormBtnText: "close" });
+                } else {
+                    this.setState({ deleteCarFormBtnText: "open" });
+                }
+                this.setState({ showDeleteCarForm: !this.state.showDeleteCarForm });
+                break;
         }
     }
 
@@ -111,6 +119,7 @@ export class Home extends Component {
             ? <p><em>Loading...</em></p>
                 : Home.renderCarsTable(this.state.allCars);
             const { showAddCarForm } = this.state;
+            const { showDeleteCarForm } = this.state;
         return (
 
             <div className=".hero-page">
@@ -119,11 +128,19 @@ export class Home extends Component {
 
                 <Button variant="primary" disabled={!this.state.previousPage} onClick={() => { this.spliceUrlString(this.state.previousPage) }} > Previous Page</Button>{" "}
                 <Button variant="primary" disabled={!this.state.nextPage} onClick={() => { this.spliceUrlString(this.state.nextPage) }} > Next Page</Button>
+
                 <br></br><h1><Badge bg="danger">Add Car</Badge></h1>
                 <Button onClick={() => this.hideComponent("showAddCarForm")}>
-                    Click to {this.state.addCarFormBtnText} form
+                    Click to {this.state.addCarFormBtnText}
                 </Button>
                 {showAddCarForm && <AddCar />}
+
+
+                <br></br><h1><Badge bg="danger">Delete Car</Badge></h1>
+                <Button onClick={() => this.hideComponent("showDeleteCarForm")}>
+                    Click to {this.state.deleteCarFormBtnText} form
+                </Button>
+                {showDeleteCarForm && <DeleteCar />}
                
                 {this.state.serverCallStatus}
             </div>

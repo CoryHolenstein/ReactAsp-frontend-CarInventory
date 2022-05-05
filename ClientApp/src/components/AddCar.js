@@ -68,17 +68,13 @@ export class AddCar extends Component {
             }).then((response) => {
 
                 console.log(response.data);
-                console.log(response.data[0]);
+                console.log(response.data);
                 console.log(response.status);
-
-                this.setState({ allCars: response.data, loading: false });
-
-
 
 
             });
         } catch (error) {
-            this.setState({ serverCallStatus: "Already exists or bad credentials." });
+            console.log(error);
         }
     }
 

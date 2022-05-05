@@ -14,8 +14,30 @@ namespace CarInventoryReactAsp.Controllers
         public InventoryController(IHttpClientFactory httpClientFactory) =>
        _httpClientFactory = httpClientFactory;
 
-        [HttpPost("add-car")]
+        [HttpPost("delete-car")]
         public async Task<String> Post([FromBody] Car car)
+        {
+
+
+            var client = _httpClientFactory.CreateClient();
+
+         
+
+
+            JsonContent content = JsonContent.Create(car);
+
+            Console.WriteLine(content); 
+            var response = await client.PostAsync(BASE_URL + "/inventory/deletecar/", content);
+
+            response.EnsureSuccessStatusCode();
+
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            Console.WriteLine(responseBody);
+            return responseBody;
+        }
+        [HttpPost("add-car")]
+        public async Task<String> add([FromBody] Car car)
         {
 
             Random random = new Random();
@@ -39,6 +61,7 @@ namespace CarInventoryReactAsp.Controllers
             return responseBody;
         }
 
+ 
 
     }
 }

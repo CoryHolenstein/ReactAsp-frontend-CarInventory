@@ -13,6 +13,14 @@ namespace CarInventoryReactAsp.Models
             CarColor = "hmmm";
             CarType = "hmmm";
         }
+        public Car(string inputInventoryID)
+        {
+            InventoryID = inputInventoryID;
+            CarBrand = "hmm";
+            CarName = "hmmm";
+            CarColor = "hmmm";
+            CarType = "hmmm";
+        }
         public Car(string inputInventoryID, string inputCarBrand, string inputCarName, string inputCarColor, string inputCarType)
         {
             InventoryID = inputInventoryID;
