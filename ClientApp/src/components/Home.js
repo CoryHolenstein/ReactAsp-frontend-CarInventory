@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { Badge, Button, Table, Form } from 'react-bootstrap';
-
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import { AddCar } from './AddCar';
 
 
 export class Home extends Component {
@@ -9,15 +11,17 @@ export class Home extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { allCars: "", nextPage: "", previousPage: "", loading: true };
+
+        this.state = { allCars: "", nextPage: "", previousPage: "", showAddCarForm: false, addCarFormBtnText: "open", loading: true };
+        this.hideComponent = this.hideComponent.bind(this);
     }
 
     componentDidMount() {
 
-
         this.grabAllCars();
 
     }
+
     async grabAllCars() {
         try {
             await axios.post('https://localhost:7072/api/Home/get-all-cars', {
@@ -79,6 +83,7 @@ export class Home extends Component {
         );
 
     }
+
     spliceUrlString(page) {
 
         var num = page.slice(-1);
@@ -86,13 +91,26 @@ export class Home extends Component {
         this.loadNextPage(num);
     }
 
+    hideComponent(name) {
+        console.log(name);
+        switch (name) {
+            case "showAddCarForm":
+                if (this.state.showAddCarForm == false) {
+                    this.setState({ addCarFormBtnText: "close" });
+                } else {
+                    this.setState({ addCarFormBtnText: "open" });
+                }
+                this.setState({ showAddCarForm: !this.state.showAddCarForm });
+                break;
 
+        }
+    }
 
     render() {
         let contents = this.state.loading
             ? <p><em>Loading...</em></p>
-            : Home.renderCarsTable(this.state.allCars);
-
+                : Home.renderCarsTable(this.state.allCars);
+            const { showAddCarForm } = this.state;
         return (
 
             <div className=".hero-page">
@@ -101,36 +119,19 @@ export class Home extends Component {
 
                 <Button variant="primary" disabled={!this.state.previousPage} onClick={() => { this.spliceUrlString(this.state.previousPage) }} > Previous Page</Button>{" "}
                 <Button variant="primary" disabled={!this.state.nextPage} onClick={() => { this.spliceUrlString(this.state.nextPage) }} > Next Page</Button>
-
-                <Form>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Vehicle Brand</Form.Label>
-                        <Form.Control type="text" onChange={this.handleUsernameChange} placeholder="Vehicle Brand" />
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" >
-                        <Form.Label>Vehicle Make</Form.Label>
-                        <Form.Control type="text" onChange={this.handlePasswordChange} placeholder="Vehicle Name" />
-                    </Form.Group>
-                    <Form.Group className="mb-3" >
-                        <Form.Label>Vehicle Model</Form.Label>
-                        <Form.Control type="text" onChange={this.handlepasswordConfirmationChange} placeholder="Vehicle Color" />
-                    </Form.Group>
-                    <Form.Group className="mb-3" >
-                        <Form.Label>Vehicle Type</Form.Label>
-                        <Form.Control type="text" onChange={this.handlepasswordConfirmationChange} placeholder="Vehicle Type" />
-                    </Form.Group>
-                    <Button disabled={this.state.username == "" || this.state.password == "" || this.state.passwordConfirmation == ""} variant="primary" onClick={() => { this.register() }}>
-                        Add Vehicle
-                    </Button>
-                </Form>
+                <br></br><h1><Badge bg="danger">Add Car</Badge></h1>
+                <Button onClick={() => this.hideComponent("showAddCarForm")}>
+                    Click to {this.state.addCarFormBtnText} form
+                </Button>
+                {showAddCarForm && <AddCar />}
+               
                 {this.state.serverCallStatus}
             </div>
 
 
         );
     }
-
+ 
 
 
 
