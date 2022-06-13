@@ -84,7 +84,7 @@ export class AddCar extends Component {
   
         return (
             <div>
-                <h1><Badge bg="danger">Add New Car</Badge></h1>
+              
                 <Form>
                     <Form.Group className="mb-3">
                         <Form.Label>Vehicle Brand</Form.Label>

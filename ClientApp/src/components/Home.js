@@ -140,7 +140,7 @@ export class Home extends Component {
 
                 <br></br><h1><Badge bg="danger">Delete Car</Badge></h1>
                 <Button onClick={() => this.hideComponent("showDeleteCarForm")}>
-                    Click to {this.state.deleteCarFormBtnText} form
+                    Click to {this.state.deleteCarFormBtnText}
                 </Button>
                 {showDeleteCarForm && <DeleteCar />}
              

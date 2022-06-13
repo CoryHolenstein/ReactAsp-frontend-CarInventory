@@ -63,7 +63,7 @@ export class DeleteCar extends Component {
   
         return (
             <div>
-                <h1><Badge bg="danger">Delete Car</Badge></h1>
+     
                 <Form>
                     <Form.Group className="mb-3">
                         <Form.Label>Inventory ID</Form.Label>

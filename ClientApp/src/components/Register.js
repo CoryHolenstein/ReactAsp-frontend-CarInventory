@@ -74,7 +74,7 @@ export class Register extends Component {
                         <Form.Label>Username (6-15 characters)</Form.Label>
                         <Form.Control type="text"  onChange={this.handleUsernameChange} placeholder="Username" />
                         <Form.Text className="text-muted">
-                            We'll share you data with everyone. Even people you don't want to have your data.
+                            We'll share your data with everyone. Even people you don't want to have your data.
                         </Form.Text>
                     </Form.Group>
 

@@ -67,7 +67,7 @@ export class Login extends Component {
                         <Form.Label>Username</Form.Label>
                         <Form.Control type="text"  onChange={this.handleUsernameChange} placeholder="Username" />
                         <Form.Text className="text-muted">
-                            We'll share you data with everyone. Even people you don't want to have your data.
+                            We'll share your data with everyone. Even people you don't want to have your data.
                         </Form.Text>
                     </Form.Group>
 
